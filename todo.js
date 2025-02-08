@@ -5,7 +5,7 @@ function addTask() {
   if (inputBox.value === "") {
     alert("You must right something");
   } else {
-    let li = document.createElement("li"); // each item
+    let li = document.createElement("li"); // each task
     li.innerHTML = inputBox.value;
     listContainer.appendChild(li);
     let span = document.createElement("span"); // delete icon
@@ -14,3 +14,16 @@ function addTask() {
   }
   inputBox.value = "";
 }
+
+// toggle state of task
+listContainer.addEventListener(
+  "click",
+  function (e) {
+    if (e.target.tagName === "LI") {
+      e.target.classList.toggle("checked");
+    } else if (e.target.tagName === "SPAN") {
+      e.target.parentElement.remove();
+    }
+  },
+  false
+);
